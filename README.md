@@ -1,26 +1,26 @@
 # 🎨 RGB to Grayscale Converter
 
-> A Flask-based web app to convert RGB images to grayscale using OpenCV.
+A Flask-based web app to convert RGB images to grayscale using OpenCV.
 
-![App Screenshot](https://via.placeholder.com/800x300.png?text=RGB+to+Grayscale+Converter)
+![App Screenshot](https://github.com/entracloud/RGB-to-GRAYSCALE-Converter/assets/img/working-img.png)
 
 ---
 
 ## 📌 Features
 
 - Upload RGB images via browser
-- Convert them to grayscale using OpenCV
-- Preview both original and grayscale images
+- Convert images to grayscale using OpenCV
+- Preview both original and grayscale outputs
 - Simple, clean HTML/CSS UI
 - Python Flask backend
-- UID-based file naming
+- UUID-based file naming
 - CI support with GitHub Actions
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Deployment Options
 
-⚠️ *This is a backend (Flask) application and cannot be deployed directly to GitHub Pages. You can deploy it to platforms like:*
+This is a backend (Flask) application and cannot be deployed to GitHub Pages (which serves static sites only). Consider:
 
 - [Render](https://render.com/)
 - [Railway](https://railway.app/)
@@ -30,81 +30,104 @@
 ---
 
 ## 📁 Project Structure
+
+```text
 RGB-to-GRAYSCALE-Converter/
-├── app.py # Flask backend
-├── requirements.txt # Python dependencies
-├── uploads/ # Stores user-uploaded & processed images
+├── app.py                  # Flask backend
+├── requirements.txt        # Python dependencies
+├── uploads/                # Stores user-uploaded & processed images
 ├── assets/
-│ └── css/
-│ └── style.css # Styling
+│   └── css/
+│       └── style.css       # Styling
 ├── public/
-│ └── index.html # UI frontend
-├── .github/
-│ └── workflows/
-│ └── python-app.yml # GitHub Actions workflow
-└── uploads/
-└── test_main.py # Basic test file
+│   └── index.html          # UI frontend
+└── .github/
+   └── workflows/
+       └── python-app.yml  # GitHub Actions workflow
+```
+
+Note: Paths may vary slightly based on your local changes.
 
 ---
 
 ## ⚙️ Getting Started
 
-### 1. Clone the Repository
+### 1) Clone and set up
 
 ```bash
-git clone https://github.com/your-username/RGB-to-GRAYSCALE-Converter.git
+git clone https://github.com/entracloud/RGB-to-GRAYSCALE-Converter.git
 cd RGB-to-GRAYSCALE-Converter
 
 python -m venv venv
-source venv/bin/activate       # Linux/macOS
-# OR
-venv\Scripts\activate          # Windows
+# Linux/macOS
+source venv/bin/activate
+# Windows (PowerShell)
+venv\Scripts\Activate.ps1
 
 pip install -r requirements.txt
+```
 
+### 2) Run the app
+
+```bash
 python app.py
+```
 
-Then open: http://localhost:5000
+Then open your browser at:
+- http://localhost:5000
 
-✅ GitHub Actions (CI)
+If the app requires an `uploads/` directory and it doesn't exist, create it before running:
+- Linux/macOS: `mkdir -p uploads`
+- Windows: `mkdir uploads`
 
-This repo uses GitHub Actions to:
+### Alternative: Flask CLI
 
-Set up Python environment
+```bash
+# Linux/macOS
+export FLASK_APP=app.py
+export FLASK_ENV=development   # optional: enables auto-reload
+flask run --port 5000
 
-Install requirements
+# Windows (PowerShell)
+$env:FLASK_APP="app.py"
+$env:FLASK_ENV="development"
+flask run --port 5000
+```
 
-Run app.py to check for errors (sanity check)
+---
 
-Run test(s)
+## ✅ Continuous Integration (GitHub Actions)
 
-See the workflow file: .github/workflows/python-app.yml
+This repository includes a CI workflow that:
+- Sets up a Python environment
+- Installs requirements
+- Runs a quick sanity check of the app
+- Executes tests
 
-🧪 Running Tests
+See the workflow file:
+- .github/workflows/python-app.yml
 
-Tests are located in uploads/test_main.py.
+---
 
-To run tests locally:
+## 📦 Deployment Tips
 
-pytest uploads/test_main.py
+- Ensure your `requirements.txt` is up to date.
+- For platforms like Render/Railway/Fly.io/Heroku:
+  - Set the start command to `python app.py` (or use a WSGI server like `gunicorn` if you prefer).
+  - Configure any necessary environment variables (e.g., `PORT` if required by the platform).
+- GitHub Pages is for static sites only and will not work for Flask apps.
 
-📦 Deployment
+Need deployment help? Open an issue or discussion in the repository.
 
-This app is best deployed to:
+---
 
-Render
+## 🙌 Credits
 
-Railway
+Built with ❤️ by the [Entracloud](https://github.com/entracloud) team.
 
-Fly.io
+---
 
-Heroku
+## 📄 License
 
-❗ GitHub Pages is for static sites only and will not work for Flask apps.
-
-Need deployment help? Just ask!
-
-📄 License
-
-MIT License
+MIT License  
 © 2025 Entracloud
