@@ -2,7 +2,7 @@
 
 A Flask-based web app to convert RGB images to grayscale using OpenCV.
 
-![App Screenshot](https://github.com/entracloud/RGB-to-GRAYSCALE-Converter/assets/img/working-img.png)
+![App Screenshot](https://github.com/entracloud/RGB-to-GRAYSCALE-Converter/blob/main/assets/img/working-img.PNG)
 
 ---
 
