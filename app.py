@@ -5,7 +5,10 @@ import secrets  # For generating secure random UID
 
 app = Flask(__name__, static_url_path='', static_folder='public')
 
-UPLOAD_FOLDER = 'uploads'
+if os.environ.get('VERCEL'):
+    UPLOAD_FOLDER = '/tmp/uploads'
+else:
+    UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
