@@ -61,5 +61,9 @@ def serve_css(filename):
     return send_from_directory(os.path.join(BASE_DIR, 'assets', 'css'), filename)
 
 
+@app.errorhandler(404)
+def not_found(e):
+    return send_from_directory(os.path.join(BASE_DIR, 'public'), 'index.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
