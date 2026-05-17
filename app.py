@@ -3,17 +3,19 @@ import os
 import cv2
 import secrets  # For generating secure random UID
 
-app = Flask(__name__, static_url_path='', static_folder='public')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+app = Flask(__name__, static_url_path='', static_folder=os.path.join(BASE_DIR, 'public'))
 
 if os.environ.get('VERCEL'):
     UPLOAD_FOLDER = '/tmp/uploads'
 else:
-    UPLOAD_FOLDER = 'uploads'
+    UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
 def index():
-    return send_from_directory('public', 'index.html')
+    return send_from_directory(os.path.join(BASE_DIR, 'public'), 'index.html')
 
 
 @app.route('/upload', methods=['POST'])
@@ -56,7 +58,7 @@ def uploaded_file(filename):
 
 @app.route('/assets/css/<path:filename>')
 def serve_css(filename):
-    return send_from_directory('assets/css', filename)
+    return send_from_directory(os.path.join(BASE_DIR, 'assets', 'css'), filename)
 
 
 if __name__ == '__main__':
