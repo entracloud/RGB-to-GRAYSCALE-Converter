@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RGB to Grayscale Converter</title>
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
@@ -9,11 +10,12 @@
   <div class="container">
     <h1>RGB to Grayscale Converter</h1>
     <form id="uploadForm" enctype="multipart/form-data">
-      <input type="file" name="image" accept="image/*" required />
+      <label for="imageInput" class="hidden">Upload Image:</label>
+      <input type="file" id="imageInput" name="image" accept="image/*" required />
       <button type="submit">Convert</button>
     </form>
 
-    <div id="result" style="display: none;">
+    <div id="result" class="hidden">
       <h2>Results</h2>
       <div class="images">
         <div>
@@ -58,7 +60,7 @@
       document.getElementById('original').src = data.original + '?t=' + timestamp;
       document.getElementById('grayscale').src = data.grayscale + '?t=' + timestamp;
 
-      resultDiv.style.display = 'block';
+      resultDiv.classList.remove('hidden');
     });
   </script>
 </body>
