@@ -42,6 +42,11 @@ def upload():
 
     # Read and convert to grayscale
     img_color = cv2.imread(original_path)
+    if img_color is None:
+        if os.path.exists(original_path):
+            os.remove(original_path)
+        return jsonify({"error": "Invalid image file format"}), 400
+
     gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
     cv2.imwrite(grayscale_path, gray)
 
